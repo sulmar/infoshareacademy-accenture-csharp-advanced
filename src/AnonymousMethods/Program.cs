@@ -1,5 +1,5 @@
 ﻿
-using Delegates;
+using AnonymousMethods;
 
 Console.WriteLine("Hello, Delegates!");
 

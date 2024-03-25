@@ -1,4 +1,4 @@
-﻿namespace Delegates;
+﻿namespace AnonymousMethods;
 
 public class Printer
 {
