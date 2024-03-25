@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadSynchronization", "Th
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadSafeCollection", "ThreadSafeCollection\ThreadSafeCollection.csproj", "{DE81DD80-A231-4097-B587-A36E359839D5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsynchronousProgramming", "AsynchronousProgramming\AsynchronousProgramming.csproj", "{ED8969A9-A220-4C55-B331-EABF26309B6B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{DE81DD80-A231-4097-B587-A36E359839D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE81DD80-A231-4097-B587-A36E359839D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE81DD80-A231-4097-B587-A36E359839D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED8969A9-A220-4C55-B331-EABF26309B6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED8969A9-A220-4C55-B331-EABF26309B6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED8969A9-A220-4C55-B331-EABF26309B6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED8969A9-A220-4C55-B331-EABF26309B6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
