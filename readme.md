@@ -2,7 +2,7 @@
 
 ## Wprowadzenie
 
-Witaj w repozytorium z materiałami do szkolenia ** C# dla zaawansowanych **.
+Witaj w repozytorium z materiałami do szkolenia **C# dla zaawansowanych**.
 
 Do rozpoczęcia tego kursu potrzebujesz następujących rzeczy:
 
