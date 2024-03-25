@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginLibrary", "PluginLibr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadSynchronization", "ThreadSynchronization\ThreadSynchronization.csproj", "{D54E42F3-BEEF-49F6-9DCC-4A4BC246932B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadSafeCollection", "ThreadSafeCollection\ThreadSafeCollection.csproj", "{DE81DD80-A231-4097-B587-A36E359839D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{D54E42F3-BEEF-49F6-9DCC-4A4BC246932B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D54E42F3-BEEF-49F6-9DCC-4A4BC246932B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D54E42F3-BEEF-49F6-9DCC-4A4BC246932B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE81DD80-A231-4097-B587-A36E359839D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE81DD80-A231-4097-B587-A36E359839D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE81DD80-A231-4097-B587-A36E359839D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE81DD80-A231-4097-B587-A36E359839D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
