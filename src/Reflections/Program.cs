@@ -8,7 +8,6 @@ MetadataTest();
 
 void MetadataTest()
 {
-    // TODO: Auto generate documentation for Order type
     DocumentationGenerator.GenerateDocumentation(typeof(Order));
 }
 

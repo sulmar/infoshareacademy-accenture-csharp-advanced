@@ -16,21 +16,30 @@ internal class DocumentationGenerator
     {
         Console.WriteLine("Properties:");
 
-        throw new NotImplementedException();
+        foreach(var property in type.GetProperties())
+        {
+            Console.WriteLine($"{property.Name} {property.PropertyType}");
+        }
     }
 
     private static void GenerateMethodsDocumentation(Type type)
     {
         Console.WriteLine("Methods:");
 
-        throw new NotImplementedException();
+        foreach(var method in type.GetMethods())
+        {
+            Console.WriteLine($"{method.Name} {method.ReturnType}");
+        }
     }
 
     private static void GenerateEventsDocumentation(Type type)
     {
         Console.WriteLine("Events:");
 
-        throw new NotImplementedException();
+        foreach(var @event  in type.GetEvents())
+        {
+            Console.WriteLine($"{@event.Name}");
+        }
     }
 }
 
