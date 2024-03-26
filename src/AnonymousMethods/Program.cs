@@ -1,5 +1,6 @@
 ﻿
 using AnonymousMethods;
+using System.Threading.Channels;
 
 Console.WriteLine("Hello, Delegates!");
 
@@ -52,6 +53,13 @@ foreach (var logger in loggers)
 
 // printer.OnPrintCompleted.Invoke(200);
 printer.CanPrint = (copies) => copies < 10;
+
+printer.OnErrorPrint((msg) =>
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine(msg);
+    Console.ResetColor();
+});
 
 printer.Print("Lorem ipsum");
 printer.Print("Lorem ipsum", 11);

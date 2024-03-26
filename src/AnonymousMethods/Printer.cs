@@ -18,11 +18,21 @@ public class Printer
 
     public event EventHandler<PrintEventArgs> OnPrintCompleted;
 
+    private Action<string> _onErrorPrint;
+    public void OnErrorPrint(Action<string> onErrorPrint)
+    {
+        _onErrorPrint = onErrorPrint;
+    }
+
     public void Print(string content, byte copies = 1)
     {
         if (!CanPrint.Invoke(copies))
         {
-            throw new InvalidOperationException($"Nie możesz drukować więcej niż {copies} kopii.");
+            var message = $"Nie możesz drukować więcej niż {copies} kopii.";
+
+            _onErrorPrint?.Invoke(message);
+
+            throw new InvalidOperationException(message);
         }
 
         for (int copy = 0; copy < copies; copy++)
