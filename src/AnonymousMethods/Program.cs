@@ -19,7 +19,10 @@ printer.Log += delegate (string msg)
 printer.Log += (msg) => File.AppendAllText("log.bin", $"[{DateTime.Now}] {msg}");
 
 PrintCostCalculator calculator = new PrintCostCalculator();
-printer.CalculateCost += calculator.CalculateCost;
+// printer.CalculateCost += calculator.CalculateCost;
+
+// Wyrażenie lambda
+printer.CalculateCost += (copies, cost) => copies * cost;
 
 var f = (int x, int y) => x + y;
 

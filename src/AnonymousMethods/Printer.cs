@@ -12,10 +12,14 @@ public class Printer
     {
         for (int copy = 0; copy < copies; copy++)
         {
+            //if (Log != null)
+            //{
+            //    Log.Invoke($"Printing {content} copy #{copy}");
+            //}
+
             Log?.Invoke($"Printing {content} copy #{copy}");
         }
 
-        // TODO: refactor
         decimal? cost = CalculateCost?.Invoke(copies, 0.99M);
 
         if (cost.HasValue)
@@ -27,7 +31,7 @@ public class Printer
         Console.WriteLine($"Printed {copies} copies.");
     }
 
-   
+
 
     private void DisplayLCD(decimal cost)
     {
