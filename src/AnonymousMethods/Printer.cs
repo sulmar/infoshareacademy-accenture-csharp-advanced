@@ -15,8 +15,7 @@ public class Printer
     public Action<string> Log;
     public Func<byte, decimal, decimal> CalculateCost;
 
-    public delegate void PrintCompletedDelegate(object sender, PrintEventArgs args);
-    public event PrintCompletedDelegate? OnPrintCompleted;
+    public event EventHandler<PrintEventArgs> OnPrintCompleted;
 
     public void Print(string content, byte copies = 1)
     {
