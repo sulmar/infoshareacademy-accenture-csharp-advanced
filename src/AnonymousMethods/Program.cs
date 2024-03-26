@@ -18,6 +18,9 @@ printer.Log += delegate (string msg)
 // Wyrażenie Lambda (Lambda Expression) - funkcje strzałkowe w JS
 printer.Log += (msg) => File.AppendAllText("log.bin", $"[{DateTime.Now}] {msg}");
 
+
+printer.OnPrintCompleted += copies => Console.WriteLine($"Printed {copies} copies.");
+
 PrintCostCalculator calculator = new PrintCostCalculator();
 // printer.CalculateCost += calculator.CalculateCost;
 
@@ -46,6 +49,8 @@ foreach (var logger in loggers)
 {
     Console.WriteLine(logger.Method);
 }
+
+// printer.OnPrintCompleted.Invoke(200);
 
 printer.Print("Lorem ipsum");
 printer.Print("Lorem ipsum", 3);

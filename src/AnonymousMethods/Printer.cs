@@ -5,6 +5,9 @@ public class Printer
     public Action<string> Log;
     public Func<byte, decimal, decimal> CalculateCost;
 
+    public delegate void PrintCompletedDelegate(byte copies);
+    public event PrintCompletedDelegate? OnPrintCompleted;
+
     public void Print(string content, byte copies = 1)
     {
         for (int copy = 0; copy < copies; copy++)
@@ -23,9 +26,8 @@ public class Printer
         {
             DisplayLCD(cost.Value);
         }
-
-        // TODO: Send printed signal 
-        Console.WriteLine($"Printed {copies} copies.");
+        
+        OnPrintCompleted?.Invoke(copies);
     }
 
 
