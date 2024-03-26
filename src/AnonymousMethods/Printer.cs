@@ -2,12 +2,14 @@
 
 public class Printer
 {
+    public delegate void LogDelegate(string message);
+    public LogDelegate? Log;
+
     public void Print(string content, byte copies = 1)
     {
         for (int copy = 0; copy < copies; copy++)
         {
-            // TODO: Log to Console and/or to LogFile
-            Console.WriteLine($"{DateTime.Now} Printing {content} copy #{copy}");
+            Log?.Invoke($"Printing {content} copy #{copy}");
         }
 
         // TODO: refactor
