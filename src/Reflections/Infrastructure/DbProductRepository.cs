@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Reflections.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -7,27 +8,53 @@ using System.Threading.Tasks;
 
 namespace Reflections.Infrastructure;
 
-internal class CsvFileProductRepository
+internal class S3StorageProductRepository : IProductRepository
 {
-    private Product product;
-
-    public CsvFileProductRepository()
+    public void Add(Product product)
     {
-        product = new Product(1, $"Product from CSV", "Black", 10.99m, Product.Category.Electronics);
+        throw new NotImplementedException();
     }
 
-    public Product Load(string filename, int id)
+    public Product Get(int id)
+    {
+        throw new NotImplementedException();
+    }
+}
+
+internal class CsvFileProductRepository : IProductRepository
+{
+    private readonly string _filename;
+    private Product product;
+
+    public CsvFileProductRepository(string filename)
+    {
+        product = new Product(1, $"Product from CSV", "Black", 10.99m, Product.Category.Electronics);
+
+        this._filename = filename;
+    }
+
+    public void Add(Product product)
+    {
+        Save(_filename, product);
+    }
+
+    public Product Get(int id)
+    {
+        return Load(_filename, id);
+    }
+
+    private Product Load(string filename, int id)
     {
         return product;
     }
 
-    public void Save(string filename, Product product)
+    private void Save(string filename, Product product)
     {
         this.product = product;
     }
 }
 
-internal class DbProductRepository
+internal class DbProductRepository : IProductRepository
 {
     private Product product;
 

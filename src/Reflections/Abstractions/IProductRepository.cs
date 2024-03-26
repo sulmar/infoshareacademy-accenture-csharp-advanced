@@ -9,4 +9,5 @@ namespace Reflections.Abstractions;
 internal interface IProductRepository
 {
     Product Get(int id);
+    void Add(Product product);
 }

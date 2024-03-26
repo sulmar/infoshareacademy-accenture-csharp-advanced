@@ -1,5 +1,6 @@
 ﻿
 using Reflections;
+using Reflections.Abstractions;
 using Reflections.Infrastructure;
 using System.Text.Json;
 
@@ -11,23 +12,25 @@ IoCTest();
 
 void IoCTest()
 {
+    IProductRepository productRepository;
+
     bool csvMode = true;
+
     if (csvMode)
     {
-
-        CsvFileProductRepository repository = new CsvFileProductRepository();
-        var product = repository.Load("file1.csv", 1);
-
-        Console.WriteLine(product);
+        productRepository = new CsvFileProductRepository("file1.csv");
     }
     else
     {
-        DbProductRepository repository = new DbProductRepository();
-        var product = repository.Get(1);
-        repository.ChangeColor(product.Id, "White");
-
-        Console.WriteLine(product);
+        productRepository = new DbProductRepository();
     }
+
+    var product = productRepository.Get(1);
+    productRepository.Add(product);
+    Console.WriteLine(product);
+
+
+
 }
 
 void MetadataTest()
