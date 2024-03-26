@@ -26,10 +26,10 @@ void GenericClassAndInterfaceTest()
     
     Console.WriteLine(order);
 
-    // TODO: Dodaj implementację
-    IMeasureRepository measureRepository = null;
+    IMeasureRepository measureRepository = new InMemoryMeasureRepository();
 
-    throw new NotImplementedException();
+    Measure measure = new Measure { Id = 1, Value = 20 };
+    measureRepository.Add(measure);
 }
 
 static void GenericMethodTest()
