@@ -6,9 +6,9 @@ Console.WriteLine("Hello, Generic Types!");
 
  GenericMethodTest();
 
-GenericClassTest();
+GenericClassAndInterfaceTest();
 
-void GenericClassTest()
+void GenericClassAndInterfaceTest()
 {
     ICustomerRepository customerRepository = new InMemoryCustomerRepository();
 
