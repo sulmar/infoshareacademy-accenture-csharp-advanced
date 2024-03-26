@@ -3,14 +3,9 @@
 internal class LocalStorage
 {
     private readonly IDictionary<string, string> _storage = new Dictionary<string, string>();
-
-    public void Set(string key, string value)
-    {
-        _storage.TryAdd(key, value);
-    }
-  
+    
     public void Set<T>(string key, T value)        
-        where T : struct
+        where T : IConvertible
     {
         _storage.TryAdd(key, value.ToString());
     }
