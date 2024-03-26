@@ -51,9 +51,10 @@ foreach (var logger in loggers)
 }
 
 // printer.OnPrintCompleted.Invoke(200);
+printer.CanPrint = (copies) => copies < 10;
 
 printer.Print("Lorem ipsum");
-printer.Print("Lorem ipsum", 3);
+printer.Print("Lorem ipsum", 11);
 
 Console.WriteLine();
 

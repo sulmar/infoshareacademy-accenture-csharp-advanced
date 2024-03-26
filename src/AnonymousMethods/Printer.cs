@@ -14,11 +14,17 @@ public class Printer
 {
     public Action<string> Log;
     public Func<byte, decimal, decimal> CalculateCost;
+    public Predicate<byte> CanPrint;
 
     public event EventHandler<PrintEventArgs> OnPrintCompleted;
 
     public void Print(string content, byte copies = 1)
     {
+        if (!CanPrint.Invoke(copies))
+        {
+            throw new InvalidOperationException($"Nie możesz drukować więcej niż {copies} kopii.");
+        }
+
         for (int copy = 0; copy < copies; copy++)
         {
             //if (Log != null)
