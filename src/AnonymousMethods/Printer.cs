@@ -5,6 +5,9 @@ public class Printer
     public delegate void LogDelegate(string message);
     public LogDelegate? Log;
 
+    public delegate decimal CalculateCostDelegate(int copies, decimal cost);
+    public CalculateCostDelegate? CalculateCost;
+
     public void Print(string content, byte copies = 1)
     {
         for (int copy = 0; copy < copies; copy++)
@@ -13,7 +16,7 @@ public class Printer
         }
 
         // TODO: refactor
-        decimal? cost = CalculateCost(copies, 0.99M);
+        decimal? cost = CalculateCost?.Invoke(copies, 0.99M);
 
         if (cost.HasValue)
         {
@@ -24,10 +27,7 @@ public class Printer
         Console.WriteLine($"Printed {copies} copies.");
     }
 
-    private decimal CalculateCost(int copies, decimal cost)
-    {
-        return copies * cost;
-    }
+   
 
     private void DisplayLCD(decimal cost)
     {

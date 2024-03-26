@@ -9,6 +9,31 @@ printer.Log += LogToConsole;
 printer.Log += LogToFile;
 printer.Log += Console.WriteLine;
 
+// Metoda anonimowa
+printer.Log += delegate (string msg)
+{
+    File.AppendAllText("log.json", $"[{DateTime.Now}] {msg}");
+};
+
+// Wyrażenie Lambda (Lambda Expression) - funkcje strzałkowe w JS
+printer.Log += (msg) => File.AppendAllText("log.bin", $"[{DateTime.Now}] {msg}");
+
+printer.CalculateCost += CalculateCost;
+
+var f = (int x, int y) => x + y;
+
+var result = f(1, 2);
+
+// C# x => y
+// JS x -> y
+// R  y <- x
+
+// f(x) = x + 1   gdzie x nalezy do Z
+// int F(int x) { return x + 1; }
+// x => x + 1
+// f(x, y) = x + y 
+// (x, y) => x + y
+
 // printer.Log -= LogToConsole;
 
 var loggers = printer.Log.GetInvocationList();
@@ -36,4 +61,9 @@ static void LogToFile(string message)
 static void LogToDb(string message)
 {
     Console.WriteLine(message);
+}
+
+static decimal CalculateCost(int copies, decimal cost)
+{
+    return copies * cost;
 }
