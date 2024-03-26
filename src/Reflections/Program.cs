@@ -25,11 +25,13 @@ void MetadataTest()
     DocumentationGenerator.GenerateDocumentation(typeof(Order));
 }
 
+ActivatorTest();
+
 GetSetValueTest();
 
 AttributeTest();
 
-ActivatorTest();
+
 
 PluginLibraryTest();
 
@@ -93,10 +95,22 @@ static void ActivatorTest()
     printer.MoveUp(1);
     printer.MoveDown(4);
 
-
     string[] operations = ["MoveLeft", "MoveRight", "MoveUp", "MoveDown"];
 
     int distance = 3;
+
+    Queue<ICommand> commands = new Queue<ICommand>();
+    commands.Enqueue(new MoveLeftCommand(printer, distance));
+    commands.Enqueue(new MoveLeftCommand(printer, distance));
+    commands.Enqueue(new MoveRightCommand(printer, distance));
+
+    while(commands.Count > 0)
+    {
+        ICommand command = commands.Dequeue();
+
+        command.Execute();
+    }
+
 
     foreach (string operation in operations)
     {
