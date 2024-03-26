@@ -3,13 +3,14 @@ using GenericTypes.Model;
 
 namespace GenericTypes.Infrastructure;
 
-internal class InMemoryOrderRepository : IOrderRepository
+internal class InMemoryEntityRepository<T> : IEntityRepository<T>
+    where T : BaseEntity
 {
-    private readonly IDictionary<int, Order> orders = new Dictionary<int, Order>();
+    protected readonly IDictionary<int, T> entities = new Dictionary<int, T>();
 
-    public void Add(Order order)
+    public void Add(T entity)
     {
-        orders[order.Id] = order;
+        entities[entity.Id] = entity;
     }
 
     public void Delete(int id)
@@ -17,12 +18,12 @@ internal class InMemoryOrderRepository : IOrderRepository
         throw new NotImplementedException();
     }
 
-    public Order? Get(int id)
+    public T? Get(int id)
     {
         throw new NotImplementedException();
     }
 
-    public IEnumerable<Order> GetAll(int id)
+    public IEnumerable<T> GetAll()
     {
         throw new NotImplementedException();
     }

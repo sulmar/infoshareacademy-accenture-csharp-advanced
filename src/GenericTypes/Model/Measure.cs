@@ -1,7 +1,7 @@
 ﻿namespace GenericTypes.Model;
 
-class Measure
+class Measure : BaseEntity
 {
-    public long Id { get; set; }
+    public int Id { get; set; }
     public float Value { get; set; }
 }

@@ -2,9 +2,18 @@
 
 namespace GenericTypes.Model;
 
-class Customer
+abstract class Base
+{
+    
+}
+
+abstract class BaseEntity : Base
 {
     public int Id { get; set; }
+}
+
+class Customer : BaseEntity
+{
     public string Name { get; set; }
     public override string ToString()
     {

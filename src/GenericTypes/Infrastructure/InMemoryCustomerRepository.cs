@@ -3,30 +3,12 @@ using GenericTypes.Model;
 
 namespace GenericTypes.Infrastructure;
 
-internal class InMemoryCustomerRepository : ICustomerRepository
+
+internal class InMemoryCustomerRepository : InMemoryEntityRepository<Customer>, ICustomerRepository
 {
-    private readonly IDictionary<int, Customer> customers = new Dictionary<int, Customer>();
-
-    public Customer? Get(int id)
+    public IEnumerable<Customer> GetByName(string name)
     {
-        if (customers.TryGetValue(id, out Customer? customer))
-            return customer;
-        else
-            return default;
-    }
-
-    public IEnumerable<Customer> GetAll(int id)
-    {
-        return customers.Values;
-    }
-
-    public void Add(Customer customer)
-    {
-        customers.Add(customer.Id, customer);
-    }
-
-    public void Delete(int id)
-    {
-        customers.Remove(id);
+        return entities.Values.Where(e=>e.Name == name);
     }
 }
+

@@ -1,8 +1,7 @@
 ﻿namespace GenericTypes.Model;
 
-class Order
+class Order : BaseEntity
 {
-    public int Id { get; set; }
     public string Number { get; set; }
     public Customer Customer { get; set; }
 

@@ -2,7 +2,7 @@
 
 namespace GenericTypes.Abstractions;
 
-interface IMeasureRepository : IEntityRepository<Measure, long>
+interface IMeasureRepository : IEntityRepository<Measure, int>
 {
 
 }
