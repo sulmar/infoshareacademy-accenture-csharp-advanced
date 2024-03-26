@@ -4,9 +4,9 @@ using GenericTypes.Model;
 
 Console.WriteLine("Hello, Generic Types!");
 
- // GenericMethodTest();
+GenericMethodTest();
 
-GenericClassAndInterfaceTest();
+// GenericClassAndInterfaceTest();
 
 void GenericClassAndInterfaceTest()
 {
@@ -39,10 +39,14 @@ static void GenericMethodTest()
     storage.Set("token", "abc");
     storage.Set("loggedOn", DateTime.Now);
 
+    storage.Set("temperature", 10.01d);
 
-    var counter = storage.GetInt("counter");
+    var counter = storage.Get<int>("counter");
 
     Console.WriteLine(++counter);
-    Console.WriteLine(storage.Get("token"));
-    Console.WriteLine(storage.GetDateTime("loggedOn"));
+    Console.WriteLine(storage.Get<string>("token"));
+    Console.WriteLine(storage.Get<DateTime>("loggedOn"));
+
+    var temperature = storage.Get<double>("temperature");
+
 }
