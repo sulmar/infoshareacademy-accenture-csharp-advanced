@@ -12,9 +12,7 @@ IoCTest();
 
 void IoCTest()
 {
-    bool csvMode = true;
-
-    IProductRepository productRepository = ProductRepositoryFactory.Create(csvMode);
+    IProductRepository productRepository = ProductRepositoryFactory.Create("CsvFile");
 
     var product = productRepository.Get(1);
     productRepository.Add(product);

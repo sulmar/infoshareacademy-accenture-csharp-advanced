@@ -10,15 +10,17 @@ namespace Reflections;
 
 internal class ProductRepositoryFactory
 {
-    public static IProductRepository Create(bool csvMode)
+    public static IProductRepository Create(string source)
     {
-        if (csvMode)
+        if (source == "CsvFile")
         {
             return new CsvFileProductRepository("file1.csv");
         }
-        else
+        else if (source == "Db")
         {
             return new DbProductRepository();
         }
+
+        throw new NotSupportedException();
     }
 }
