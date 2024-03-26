@@ -54,7 +54,8 @@ static void GetSetValueTest()
 {
 
     string json = @"{
-    ""HasWebsite"": true
+    ""HasWebsite"": true,
+    ""IsPeselValid"": true
 }";
 
     string patchRequest = $@"PATCH /api/customers/1 HTTP/1.1
@@ -76,9 +77,9 @@ Content-Type: application/merge-patch+json
         Console.WriteLine($"Property Name: {property.Name} Value: {property.Value.GetBoolean()}");
 
         // TODO: Set property value like in JS
-        // customer["HasWebsite"] = true;
+         customer[property.Name] = true;
 
-        throw new NotImplementedException();
+        Console.WriteLine(customer[property.Name]);
 
     }
 

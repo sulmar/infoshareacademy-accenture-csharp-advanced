@@ -12,4 +12,10 @@ internal class Customer
         return $"Customer: {{ Id = {Id}, IsRegonValid = {IsRegonValid}, IsPeselValid = {IsPeselValid}, HasWebsite = {HasWebsite} }}";
     }
 
+    public object this[string propertyName]
+    {
+        get => this.GetType().GetProperty(propertyName).GetValue(this);
+        set => this.GetType().GetProperty(propertyName).SetValue(this, value);
+    }
+
 }
