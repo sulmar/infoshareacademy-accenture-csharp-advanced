@@ -2,11 +2,8 @@
 
 public class Printer
 {
-    public delegate void LogDelegate(string message);
-    public LogDelegate? Log;
-
-    public delegate decimal CalculateCostDelegate(int copies, decimal cost);
-    public CalculateCostDelegate? CalculateCost;
+    public Action<string> Log;
+    public Func<byte, decimal, decimal> CalculateCost;
 
     public void Print(string content, byte copies = 1)
     {
