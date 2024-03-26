@@ -19,7 +19,7 @@ printer.Log += delegate (string msg)
 printer.Log += (msg) => File.AppendAllText("log.bin", $"[{DateTime.Now}] {msg}");
 
 
-printer.OnPrintCompleted += copies => Console.WriteLine($"Printed {copies} copies.");
+printer.OnPrintCompleted += (sender, args) => Console.WriteLine($"Printed by {sender} {args.Copies} copies.");
 
 PrintCostCalculator calculator = new PrintCostCalculator();
 // printer.CalculateCost += calculator.CalculateCost;

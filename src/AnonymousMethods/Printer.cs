@@ -1,11 +1,21 @@
 ﻿namespace AnonymousMethods;
 
+public class PrintEventArgs : EventArgs
+{
+    public int Copies { get; }
+
+    public PrintEventArgs(int copies)
+    {
+        Copies = copies;
+    }
+}
+
 public class Printer
 {
     public Action<string> Log;
     public Func<byte, decimal, decimal> CalculateCost;
 
-    public delegate void PrintCompletedDelegate(byte copies);
+    public delegate void PrintCompletedDelegate(object sender, PrintEventArgs args);
     public event PrintCompletedDelegate? OnPrintCompleted;
 
     public void Print(string content, byte copies = 1)
@@ -27,7 +37,7 @@ public class Printer
             DisplayLCD(cost.Value);
         }
         
-        OnPrintCompleted?.Invoke(copies);
+        OnPrintCompleted?.Invoke(this, new PrintEventArgs(copies));
     }
 
 
