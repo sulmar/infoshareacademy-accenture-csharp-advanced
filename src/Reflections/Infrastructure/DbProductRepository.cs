@@ -20,6 +20,11 @@ internal class CsvFileProductRepository
     {
         return product;
     }
+
+    public void Save(string filename, Product product)
+    {
+        this.product = product;
+    }
 }
 
 internal class DbProductRepository
@@ -34,6 +39,11 @@ internal class DbProductRepository
     public Product Get(int id)
     {
         return product;
+    }
+
+    public void Add(Product product)
+    {
+        this.product = product;
     }
 
     public void ChangeColor(int id, string newColor)
