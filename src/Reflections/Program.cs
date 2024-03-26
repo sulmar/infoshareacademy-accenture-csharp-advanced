@@ -1,10 +1,34 @@
 ﻿
 using Reflections;
+using Reflections.Infrastructure;
 using System.Text.Json;
 
 Console.WriteLine("Hello, Reflection!");
 
-MetadataTest();
+// MetadataTest();
+
+IoCTest();
+
+void IoCTest()
+{
+    bool csvMode = true;
+    if (csvMode)
+    {
+
+        CsvFileProductRepository repository = new CsvFileProductRepository();
+        var product = repository.Load("file1.csv", 1);
+
+        Console.WriteLine(product);
+    }
+    else
+    {
+        DbProductRepository repository = new DbProductRepository();
+        var product = repository.Get(1);
+        repository.ChangeColor(product.Id, "White");
+
+        Console.WriteLine(product);
+    }
+}
 
 void MetadataTest()
 {
