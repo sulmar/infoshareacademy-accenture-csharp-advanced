@@ -1,26 +1,47 @@
 ﻿using Reflections.Abstractions;
-using Reflections.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 
 namespace Reflections;
 
 internal class ProductRepositoryFactory
 {
+    private readonly IDictionary<Type, Type> _container;
+
     public static IProductRepository Create(string source)
     {
-        if (source == "CsvFile")
+        string name = $"Reflections.Infrastructure.{source}ProductRepository";
+
+        Type type = Assembly.GetExecutingAssembly().GetType(name);
+
+        return Create(type);
+    }
+
+    public static IProductRepository Create<T>()
+    {
+        Type type = typeof(T);
+
+        return Create(type);
+    }
+
+
+    public static IProductRepository Create(Type type)
+    {
+        foreach (var constructor in type.GetConstructors())
         {
-            return new CsvFileProductRepository("file1.csv");
-        }
-        else if (source == "Db")
-        {
-            return new DbProductRepository();
+            foreach(var parameter in constructor.GetParameters())
+            {
+                Console.WriteLine($"{parameter.Name} {parameter.ParameterType}");
+
+            }
         }
 
-        throw new NotSupportedException();
+        if (type == null)
+            throw new NotSupportedException();
+
+        IProductRepository instance = Activator.CreateInstance(type, "file1.txt") as IProductRepository;
+
+        return instance;
+
+
     }
 }
