@@ -12,24 +12,13 @@ IoCTest();
 
 void IoCTest()
 {
-    IProductRepository productRepository;
-
     bool csvMode = true;
 
-    if (csvMode)
-    {
-        productRepository = new CsvFileProductRepository("file1.csv");
-    }
-    else
-    {
-        productRepository = new DbProductRepository();
-    }
+    IProductRepository productRepository = ProductRepositoryFactory.Create(csvMode);
 
     var product = productRepository.Get(1);
     productRepository.Add(product);
     Console.WriteLine(product);
-
-
 
 }
 
