@@ -1,4 +1,7 @@
-﻿using ExtensionMethods;
+﻿using Accenture;
+using ExtensionMethods;
+
+
 
 Console.WriteLine("Hello, Extension Methods!");
 
@@ -50,13 +53,21 @@ static void InterfaceExtensionsTest()
 static void DateTimeExtensionsTest()
 {
     DateTime now = DateTime.Now;
-    long unixTimestamp = Helper.ToUnixTimestamp(now);
+
+    Console.WriteLine(now.IsHoliday());
+
+    Console.WriteLine(now.ToString());
+    
+    long unixTimestamp = now.ToUnixTimestamp();
 
     Console.WriteLine($"Current DateTime: {now}");
     Console.WriteLine($"Unix Timestamp: {unixTimestamp}");
 
-    DateTime convertedDateTime = Helper.FromUnixTimestamp(unixTimestamp);
+    DateTime convertedDateTime = unixTimestamp.FromUnixTimestamp();
     Console.WriteLine($"Converted DateTime: {convertedDateTime}");
+
+
+    
    
 }
 
