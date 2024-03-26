@@ -2,10 +2,7 @@
 
 namespace GenericTypes.Abstractions;
 
-interface ICustomerRepository
+interface ICustomerRepository : IEntityRepository<Customer>
 {
-    Customer? Get(int id);
-    IEnumerable<Customer> GetAll(int id);
-    void Add(Customer customer);
-    void Delete(int id);
+    IEnumerable<Customer> GetByName(string name);
 }

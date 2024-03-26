@@ -2,8 +2,7 @@
 
 namespace GenericTypes.Abstractions;
 
-interface IOrderRepository : IEntityRepository<Order>
+interface IMeasureRepository : IEntityRepository<Measure, long>
 {
-  
-}
 
+}

@@ -4,7 +4,7 @@ using GenericTypes.Model;
 
 Console.WriteLine("Hello, Generic Types!");
 
- GenericMethodTest();
+ // GenericMethodTest();
 
 GenericClassAndInterfaceTest();
 
@@ -25,6 +25,11 @@ void GenericClassAndInterfaceTest()
     orderRepository.Add(order);
     
     Console.WriteLine(order);
+
+    // TODO: Dodaj implementację
+    IMeasureRepository measureRepository = null;
+
+    throw new NotImplementedException();
 }
 
 static void GenericMethodTest()
