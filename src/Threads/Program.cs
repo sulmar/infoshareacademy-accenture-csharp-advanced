@@ -6,7 +6,7 @@ using Threads;
 Console.WriteLine("Hello, Threads!");
 
 const string defaultUri = "https://picsum.photos/800/600";
-const int count = 10;
+const int count = 100;
 
 string[] uris = new string[count];
 
