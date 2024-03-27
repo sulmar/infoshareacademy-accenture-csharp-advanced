@@ -67,7 +67,7 @@ static void ThreadPoolTest(string[] uris)
 
     foreach (string uri in uris)
     {
-        Download(uri);        
+        ThreadPool.QueueUserWorkItem(_ => Download(uri));
     }
 
     stopwatch.Stop();
