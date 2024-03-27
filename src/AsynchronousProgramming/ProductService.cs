@@ -5,12 +5,12 @@ namespace AsynchronousProgramming;
 
 public class ProductService
 {
-    public Task<decimal> GetPriceAsync(int productId, CancellationToken cancellationToken = default)
+    public Task<decimal> GetPriceAsync(int productId, CancellationToken cancellationToken = default, IProgress<int> progress = default)
     {
         //Task task = new Task(() => GetPrice(productId));
         //task.Start();        
 
-        Task<decimal> task = Task.Run(() => GetPrice(productId, cancellationToken));
+        Task<decimal> task = Task.Run(() => GetPrice(productId, cancellationToken, progress));
 
         return task;
     }
@@ -40,7 +40,7 @@ public class ProductService
 
     }
 
-    public decimal GetPrice(int productId, CancellationToken cancellationToken = default)
+    public decimal GetPrice(int productId, CancellationToken cancellationToken = default, IProgress<int> progress = default)
     {
         "Fetching product price...".DumpThreadId();
 
@@ -54,12 +54,9 @@ public class ProductService
 
             cancellationToken.ThrowIfCancellationRequested();
 
-            
-
             Thread.Sleep(1000); // 1 second delay
 
-            // TODO: Report progress (0% to 100%)
-            Console.Write(".");
+            progress.Report(i);
         }
 
         "Fetched product price.".DumpThreadId();

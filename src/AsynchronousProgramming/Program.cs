@@ -1,15 +1,34 @@
 ﻿
 using AsynchronousProgramming;
+using System;
+using System.Threading.Channels;
 
 Console.WriteLine("Hello, Asynchronous Programming!");
+
+List<Customer> customers = new List<Customer>();
+
+CustomerProcessor customerProcessor  = new CustomerProcessor();
+
+for (int i = 0; i < 100; i++)
+{
+    customers.Add(new Customer { TaxNumber = i.ToString() });
+}
+
+customerProcessor.Process(customers, new SignalRCustomerProgress());
+
+
 
 // MultiTasksTestAsync();
 
 try
 {
-    CancellationTokenSource cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+    CancellationTokenSource cts = new CancellationTokenSource(TimeSpan.FromSeconds(190));
 
-    TasksTestAsync(cts.Token);
+    //IProgress<int> progress = new Progress<int>(step => Console.WriteLine(new string('.', step)));
+
+    IProgress<int> progress = new ColorConsoleProgress();
+
+    TasksTestAsync(cts.Token, progress);
 
     Console.WriteLine("Press any key to exit.");
     Console.ReadKey();
@@ -57,7 +76,7 @@ static async void MultiTasksTestAsync()
 
 
 
-static async void TasksTestAsync(CancellationToken cancellationToken = default)
+static async void TasksTestAsync(CancellationToken cancellationToken = default, IProgress<int> progress = default)
 {
     var productId = 1;
 
@@ -68,9 +87,9 @@ static async void TasksTestAsync(CancellationToken cancellationToken = default)
     // var price = productService.GetPrice(productId);
     // decimal conversionRate = currencyConverterService.GetConversionRate("PLN", "EUR");
 
-    
 
-    var price = await productService.GetPriceAsync(productId, cancellationToken).ConfigureAwait(false);
+
+    var price = await productService.GetPriceAsync(productId, cancellationToken, progress).ConfigureAwait(false);
 
     decimal conversionRate = await currencyConverterService.GetConversionRateAsync("PLN", "EUR").ConfigureAwait(false);
 
