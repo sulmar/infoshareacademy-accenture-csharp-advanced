@@ -24,9 +24,10 @@ public class Customer
     public string PhoneNumber { get; set; }
     public DateTime MemberSince { get; set; }
     
-    public Customer(string name, int age, string email, string address, string phoneNumber, DateTime memberSince)
+    public Customer(string firstName, string lastName, int age, string email, string address, string phoneNumber, DateTime memberSince)
     {
-        Name = name;
+        FirstName = firstName;
+        LastName = lastName;
         Age = age;
         Email = email;
         Address = address;
