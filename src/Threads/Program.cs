@@ -15,7 +15,7 @@ for (int i = 0; i < uris.Length; i++)
     uris[i] = defaultUri;
 }
 
-ThreadTest(uris);
+// ThreadTest(uris);
 
 ThreadPoolTest(uris);
 
@@ -24,15 +24,23 @@ static void ThreadTest(string[] uris)
 {
     Console.WriteLine("Downloading by Thread.");
 
-    // TODO: Speed up downloading
-
     Stopwatch stopwatch = new Stopwatch();
 
     stopwatch.Start();
 
+    List<Thread> threads = new List<Thread>();
+
     foreach (string uri in uris)
     {
-        Download(uri);        
+        Thread thread = new Thread(() => Download(uri));
+        thread.Start();
+        threads.Add(thread);
+    }
+
+    // Wait for all thread to complete
+    foreach (Thread thread in threads)
+    {        
+        thread.Join();
     }
 
     stopwatch.Stop();
