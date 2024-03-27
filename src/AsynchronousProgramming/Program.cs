@@ -22,8 +22,11 @@ static async Task TasksTestAsync()
     var currencyConverterService = new CurrencyConverterService();
     LoggerService logger = new LoggerService();
 
-    var price = await productService.GetPriceAsync(productId);
-    decimal conversionRate = await currencyConverterService.GetConversionRateAsync("PLN", "EUR");
+    // var price = productService.GetPrice(productId);
+    // decimal conversionRate = currencyConverterService.GetConversionRate("PLN", "EUR");
+
+    var price = await productService.GetPriceAsync(productId).ConfigureAwait(false);
+    decimal conversionRate = await currencyConverterService.GetConversionRateAsync("PLN", "EUR").ConfigureAwait(false);
 
     var priceInEur = price * conversionRate;
 
