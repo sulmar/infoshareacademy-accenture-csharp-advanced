@@ -71,7 +71,7 @@ public class LoggerService
 
     public Task LogAsync(string message)
     {
-        Task.Run(()=>Log(message));  
+        return Task.Run(()=>Log(message));  
     }
 }
 
