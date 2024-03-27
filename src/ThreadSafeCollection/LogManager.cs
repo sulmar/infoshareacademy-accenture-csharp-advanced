@@ -9,7 +9,7 @@ namespace ThreadSafeCollection;
 
 internal class LogManager
 {
-    private List<string> logEntries = new List<string>();
+    private ConcurrentBag<string> logEntries = new ConcurrentBag<string>();
 
     public void Log(string message)
     {

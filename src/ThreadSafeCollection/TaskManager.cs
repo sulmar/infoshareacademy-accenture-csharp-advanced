@@ -9,7 +9,7 @@ namespace ThreadSafeCollection
 {
     internal class TaskManager
     {
-        private Queue<string> taskQueue = new();
+        private ConcurrentQueue<string> taskQueue = new();
 
         // Enqueue a task to the queue without proper synchronization
         public void EnqueueTask(string task)

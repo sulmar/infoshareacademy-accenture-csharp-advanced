@@ -1,20 +1,23 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System.Collections.Concurrent;
 using ThreadSafeCollection;
 
 Console.WriteLine("Hello, Thread-safe Collection!");
 
-ConcurrentDictionaryTest();
+// ConcurrentDictionaryTest();
 
-ConcurrentQueueTest();
+// ConcurrentQueueTest();
 
-ConcurrentBagTest();
+// ConcurrentBagTest();
 
 await BlockingCollectionsTest();
 
 static async Task BlockingCollectionsTest()
 {
-    ImageProducer imageProducer = new();
-    ImageConsumer imageConsumer = new();
+    BlockingCollection<string> imageQueue = new BlockingCollection<string>();
+
+    ImageProducer imageProducer = new(imageQueue);
+    ImageConsumer imageConsumer = new(imageQueue);
 
     Task.Run(() => imageConsumer.StartProcessing());
     Task.Run(() => imageConsumer.StartProcessing());
