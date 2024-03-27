@@ -6,7 +6,7 @@ using Threads;
 Console.WriteLine("Hello, Threads!");
 
 const string defaultUri = "https://picsum.photos/800/600";
-const int count = 100;
+const int count = 10;
 
 string[] uris = new string[count];
 
@@ -24,6 +24,8 @@ static void ThreadTest(string[] uris)
 {
     Console.WriteLine("Downloading by Thread.");
 
+    // TODO: Speed up downloading
+
     Stopwatch stopwatch = new Stopwatch();
 
     stopwatch.Start();
@@ -38,6 +40,10 @@ static void ThreadTest(string[] uris)
     Console.WriteLine("All downloads completed.");
 
     Console.WriteLine($"Time elapsed: {stopwatch.Elapsed}");
+
+    var usedThreads = uris.Length;
+
+    Console.WriteLine($"Total threads used: {usedThreads}");
 }
 
 
@@ -45,6 +51,8 @@ static void ThreadPoolTest(string[] uris)
 {
     Console.WriteLine("Downloading by ThreadPool.");
 
+    // TODO: Speed up downloading and reduce resources
+
     Stopwatch stopwatch = new Stopwatch();
 
     stopwatch.Start();
@@ -59,6 +67,10 @@ static void ThreadPoolTest(string[] uris)
     Console.WriteLine("All downloads completed.");
 
     Console.WriteLine($"Time elapsed: {stopwatch.Elapsed}");
+
+    var usedThreads = uris.Length;
+
+    Console.WriteLine($"Total threads used: {usedThreads}");
 }
 
 static void Download(string uri)
