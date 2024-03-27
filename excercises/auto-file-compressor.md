@@ -29,7 +29,8 @@ void Watcher_Created(object sender, FileSystemEventArgs e)
 ## Wymagania
 1. Aplikacja powinna pakować tylko pliki *.txt
 2. Spakowany plik powinien mieć rozszerzenie zip.
-3. Uwzględnij, że w przyszłości plik może być wysyłany do zdalnego archiwum np. AWS S3
+3. Oryginalny plik powinien być usunięty
+4. Uwzględnij, że w przyszłości spakowany plik może być wysyłany do zdalnego archiwum np. AWS S3
 
 
 ## Czas
