@@ -39,7 +39,7 @@ static void ThreadTest(string[] uris)
 
     // Wait for all thread to complete
     foreach (Thread thread in threads)
-    {        
+    {
         thread.Join();
     }
 
@@ -71,6 +71,10 @@ static void ThreadPoolTest(string[] uris)
     }
 
     stopwatch.Stop();
+    
+
+    Console.WriteLine("Press any key to continue.");
+    Console.ReadKey();
 
     Console.WriteLine("All downloads completed.");
 
@@ -86,10 +90,10 @@ static void Download(string uri)
     using (var client = new WebClient())
     {
         $"Downloading {uri}...".DumpThreadId();
+        // string content = client.DownloadStringTaskAsync(uri).Result;
+        // string content = client.DownloadString(uri);
 
-        string content = client.DownloadString(uri);
-
-        Thread.Sleep(250);
+        Thread.Sleep(Random.Shared.Next(200, 1000));
 
         $"Downoladed. {uri}".DumpThreadId();
 
