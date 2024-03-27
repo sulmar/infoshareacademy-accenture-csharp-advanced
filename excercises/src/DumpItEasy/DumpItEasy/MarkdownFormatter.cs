@@ -2,6 +2,7 @@
 
 namespace DumpItEasy;
 
+// Concrete Builder
 public class MarkdownFormatter : IFormatter
 {
     private readonly StringBuilder builder = new();
