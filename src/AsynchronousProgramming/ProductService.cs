@@ -5,6 +5,16 @@ namespace AsynchronousProgramming;
 
 public class ProductService
 {
+    public Task<decimal> GetPriceAsync(int productId)
+    {
+        //Task task = new Task(() => GetPrice(productId));
+        //task.Start();        
+
+        Task<decimal> task = Task.Run(() => GetPrice(productId));
+
+        return task;
+    }
+
     public decimal GetPrice(int productId)
     {
         "Fetching product price...".DumpThreadId();

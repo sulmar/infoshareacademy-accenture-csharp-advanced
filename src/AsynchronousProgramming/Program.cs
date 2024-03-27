@@ -9,7 +9,7 @@ var productService = new ProductService();
 var currencyConverterService = new CurrencyConverterService();
 LoggerService logger = new LoggerService();
 
-decimal price = productService.GetPrice(productId);
+decimal price = productService.GetPriceAsync(productId).Result;
 decimal conversionRate = currencyConverterService.GetConversionRate("PLN", "EUR");
 
 var priceInEur = price * conversionRate;
