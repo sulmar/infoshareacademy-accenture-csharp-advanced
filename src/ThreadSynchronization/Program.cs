@@ -36,7 +36,7 @@ void MonitorTest()
     Console.ReadLine();
 }
 
-SemaphoreTest();
+// SemaphoreTest();
 SemaphoreSlimTest();
 
 
