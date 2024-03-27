@@ -21,7 +21,7 @@ public class ProductService
 
         // Simulate a delay to mimic database or network latency
         for (int i = 0; i <= 10; i++)
-        {            
+        {
             Thread.Sleep(100); // 1 second delay
 
             // TODO: Report progress (0% to 100%)
@@ -41,12 +41,17 @@ public class LoggerService
     {
         Thread.Sleep(1000); // Simulate some I/O delay, like writing to a file or database
 
-        $"[Log]: {message}".DumpThreadId();        
+        $"[Log]: {message}".DumpThreadId();
     }
 }
 
 public class CurrencyConverterService
 {
+    public Task<decimal> GetConversionRateAsync(string fromCurrency, string toCurrency)
+    {
+        return Task.Run(() => GetConversionRate(fromCurrency, toCurrency));
+    }
+
     // Simulates fetching a currency conversion rate asynchronously
     public decimal GetConversionRate(string fromCurrency, string toCurrency)
     {

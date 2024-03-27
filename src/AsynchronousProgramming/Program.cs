@@ -9,14 +9,30 @@ var productService = new ProductService();
 var currencyConverterService = new CurrencyConverterService();
 LoggerService logger = new LoggerService();
 
-decimal price = productService.GetPriceAsync(productId).Result;
-decimal conversionRate = currencyConverterService.GetConversionRate("PLN", "EUR");
+Task<decimal> taskPrice = productService.GetPriceAsync(productId);
 
-var priceInEur = price * conversionRate;
+taskPrice.ContinueWith(taskPrice =>
+{
+    var price = taskPrice.Result;
 
-Console.WriteLine($"Price in EUR: {priceInEur}");
+    Task<decimal> conversionRateTask = currencyConverterService.GetConversionRateAsync("PLN", "EUR");
 
-logger.Log($"Calculated price in EUR for product {productId}: {priceInEur:C}");
+    conversionRateTask.ContinueWith(conversionRateTask =>
+    {
+        var conversionRate = conversionRateTask.Result;
+
+        var priceInEur = price * conversionRate;
+
+        Console.WriteLine($"Price in EUR: {priceInEur}");
+
+        logger.Log($"Calculated price in EUR for product {productId}: {priceInEur:C}");
+    });
+
+});
+
+
+Console.WriteLine("Press any key to exit.");
+Console.ReadKey();
 
 
 static void DumpThreadId(string message)
