@@ -24,15 +24,23 @@
             Thread.Sleep(1000);
         }
 
+        private static readonly object lockObject = new object();
+
         private static LoadBalancer _instance;
         public static LoadBalancer Instance
         {
             get
             {
-                if (_instance == null)
+                // <--- t2, t3...
+
+                Monitor.Enter(lockObject); // <--- t1  
+
+                if (_instance == null)  
                 {
                     _instance = new LoadBalancer();
                 }
+
+                Monitor.Exit(lockObject);
 
                 return _instance;
             }

@@ -7,9 +7,9 @@ Console.WriteLine("Hello, Thread Synchronization!");
 
 MonitorTest();
 
-SemaphoreTest();
+//SemaphoreTest();
 
-MutexTest();
+//MutexTest();
 
 
 void MonitorTest()
@@ -24,7 +24,11 @@ void MonitorTest()
             Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} got server: {server.Name} ({server.IP})");
         });
 
+        
+
         thread.Start();
+
+        // Thread.Sleep(100);
     }
 
     // TODO: Fix the multi Initialize problem
