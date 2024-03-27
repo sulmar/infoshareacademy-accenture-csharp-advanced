@@ -9,17 +9,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericTypes", "GenericType
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Records", "Records\Records.csproj", "{2E8D4D27-F128-4AAB-B15F-E0180588162F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionMethods", "ExtensionMethods\ExtensionMethods.csproj", "{82F8EB06-297D-4D2C-9969-D4991F1A7AD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtensionMethods", "ExtensionMethods\ExtensionMethods.csproj", "{82F8EB06-297D-4D2C-9969-D4991F1A7AD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflections", "Reflections\Reflections.csproj", "{B68F4C7F-A9CE-4CDD-94F0-E75EE7DBC15D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reflections", "Reflections\Reflections.csproj", "{B68F4C7F-A9CE-4CDD-94F0-E75EE7DBC15D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginLibrary", "PluginLibrary\PluginLibrary.csproj", "{312D84B4-01E7-4105-9843-D3B82A920353}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PluginLibrary", "PluginLibrary\PluginLibrary.csproj", "{312D84B4-01E7-4105-9843-D3B82A920353}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadSynchronization", "ThreadSynchronization\ThreadSynchronization.csproj", "{D54E42F3-BEEF-49F6-9DCC-4A4BC246932B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreadSynchronization", "ThreadSynchronization\ThreadSynchronization.csproj", "{D54E42F3-BEEF-49F6-9DCC-4A4BC246932B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadSafeCollection", "ThreadSafeCollection\ThreadSafeCollection.csproj", "{DE81DD80-A231-4097-B587-A36E359839D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreadSafeCollection", "ThreadSafeCollection\ThreadSafeCollection.csproj", "{DE81DD80-A231-4097-B587-A36E359839D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsynchronousProgramming", "AsynchronousProgramming\AsynchronousProgramming.csproj", "{ED8969A9-A220-4C55-B331-EABF26309B6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsynchronousProgramming", "AsynchronousProgramming\AsynchronousProgramming.csproj", "{ED8969A9-A220-4C55-B331-EABF26309B6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Threads", "Threads\Threads.csproj", "{498396C2-89EB-4B76-9852-68E13B98AF49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{ED8969A9-A220-4C55-B331-EABF26309B6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED8969A9-A220-4C55-B331-EABF26309B6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED8969A9-A220-4C55-B331-EABF26309B6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{498396C2-89EB-4B76-9852-68E13B98AF49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{498396C2-89EB-4B76-9852-68E13B98AF49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{498396C2-89EB-4B76-9852-68E13B98AF49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{498396C2-89EB-4B76-9852-68E13B98AF49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
