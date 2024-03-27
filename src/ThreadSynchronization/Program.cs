@@ -5,9 +5,9 @@ using ThreadSynchronization;
 
 Console.WriteLine("Hello, Thread Synchronization!");
 
-MonitorTest();
+// MonitorTest();
 
-//SemaphoreTest();
+SemaphoreTest();
 
 //MutexTest();
 
