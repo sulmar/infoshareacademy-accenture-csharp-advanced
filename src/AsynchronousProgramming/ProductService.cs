@@ -5,12 +5,12 @@ namespace AsynchronousProgramming;
 
 public class ProductService
 {
-    public Task<decimal> GetPriceAsync(int productId)
+    public Task<decimal> GetPriceAsync(int productId, CancellationToken cancellationToken = default)
     {
         //Task task = new Task(() => GetPrice(productId));
         //task.Start();        
 
-        Task<decimal> task = Task.Run(() => GetPrice(productId));
+        Task<decimal> task = Task.Run(() => GetPrice(productId, cancellationToken));
 
         return task;
     }
@@ -40,16 +40,26 @@ public class ProductService
 
     }
 
-    public decimal GetPrice(int productId)
+    public decimal GetPrice(int productId, CancellationToken cancellationToken = default)
     {
         "Fetching product price...".DumpThreadId();
 
         // Simulate a delay to mimic database or network latency
         for (int i = 0; i <= 10; i++)
         {
-            Thread.Sleep(100); // 1 second delay
+            //if (cancellationToken.IsCancellationRequested)
+            //{
+            //    throw new OperationCanceledException();
+            //}
+
+            cancellationToken.ThrowIfCancellationRequested();
+
+            
+
+            Thread.Sleep(1000); // 1 second delay
 
             // TODO: Report progress (0% to 100%)
+            Console.Write(".");
         }
 
         "Fetched product price.".DumpThreadId();

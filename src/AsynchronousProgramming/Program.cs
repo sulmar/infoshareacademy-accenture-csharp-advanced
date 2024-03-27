@@ -3,12 +3,33 @@ using AsynchronousProgramming;
 
 Console.WriteLine("Hello, Asynchronous Programming!");
 
-MultiTasksTestAsync();
+// MultiTasksTestAsync();
 
-// TasksTestAsync();
+try
+{
+    CancellationTokenSource cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
 
-Console.WriteLine("Press any key to exit.");
-Console.ReadKey();
+    TasksTestAsync(cts.Token);
+
+    Console.WriteLine("Press any key to exit.");
+    Console.ReadKey();
+
+    cts.Cancel();
+    // cts.CancelAfter(TimeSpan.FromSeconds(3));
+
+}
+catch (OperationCanceledException ex)
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine(ex.Message);
+    Console.ResetColor();
+}
+
+finally
+{
+    Console.WriteLine("Press any enter to exit.");
+    Console.ReadLine();
+}
 
 
 static void DumpThreadId(string message)
@@ -36,7 +57,7 @@ static async void MultiTasksTestAsync()
 
 
 
-static async void TasksTestAsync()
+static async void TasksTestAsync(CancellationToken cancellationToken = default)
 {
     var productId = 1;
 
@@ -47,7 +68,9 @@ static async void TasksTestAsync()
     // var price = productService.GetPrice(productId);
     // decimal conversionRate = currencyConverterService.GetConversionRate("PLN", "EUR");
 
-    var price = await productService.GetPriceAsync(productId).ConfigureAwait(false);
+    
+
+    var price = await productService.GetPriceAsync(productId, cancellationToken).ConfigureAwait(false);
 
     decimal conversionRate = await currencyConverterService.GetConversionRateAsync("PLN", "EUR").ConfigureAwait(false);
 
