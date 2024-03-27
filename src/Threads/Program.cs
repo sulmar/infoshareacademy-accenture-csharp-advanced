@@ -5,31 +5,74 @@ using Threads;
 
 Console.WriteLine("Hello, Threads!");
 
-Stopwatch stopwatch = new Stopwatch();
+const string defaultUri = "https://picsum.photos/800/600";
+const int count = 100;
 
-stopwatch.Start();
+string[] uris = new string[count];
 
-for (int i = 0; i < 10; i++)
+for (int i = 0; i < uris.Length; i++)
 {
-    Download("https://picsum.photos/800/600");
+    uris[i] = defaultUri;
 }
 
-stopwatch.Stop();
+ThreadTest(uris);
 
-// Write result.
-Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
+ThreadPoolTest(uris);
 
+
+static void ThreadTest(string[] uris)
+{
+    Console.WriteLine("Downloading by Thread.");
+
+    Stopwatch stopwatch = new Stopwatch();
+
+    stopwatch.Start();
+
+    foreach (string uri in uris)
+    {
+        Download(uri);        
+    }
+
+    stopwatch.Stop();
+
+    Console.WriteLine("All downloads completed.");
+
+    Console.WriteLine($"Time elapsed: {stopwatch.Elapsed}");
+}
+
+
+static void ThreadPoolTest(string[] uris)
+{
+    Console.WriteLine("Downloading by ThreadPool.");
+
+    Stopwatch stopwatch = new Stopwatch();
+
+    stopwatch.Start();
+
+    foreach (string uri in uris)
+    {
+        Download(uri);        
+    }
+
+    stopwatch.Stop();
+
+    Console.WriteLine("All downloads completed.");
+
+    Console.WriteLine($"Time elapsed: {stopwatch.Elapsed}");
+}
 
 static void Download(string uri)
 {
     using (var client = new WebClient())
     {
         $"Downloading {uri}...".DumpThreadId();
-        
+
         string content = client.DownloadString(uri);
+
+        Thread.Sleep(250);
 
         $"Downoladed. {uri}".DumpThreadId();
 
-        
+
     }
 }
