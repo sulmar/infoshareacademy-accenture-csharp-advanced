@@ -1,20 +1,29 @@
-﻿namespace DumpItEasy;
+﻿using System.Text;
+
+namespace DumpItEasy;
 
 public class MarkdownFormatter : IFormatter
 {
-    private readonly ITableBuilder tableBuilder = new MarkdownTableBuilder();
+    private readonly StringBuilder builder = new();
 
-    public string Format(Dictionary<string, object> properties)
+    public IFormatter AddHeader()
     {
-        tableBuilder.AddHeader();
+        // TODO: Add columns width
+        builder.AppendLine("| Property Name | Value                |");
+        builder.AppendLine("|---------------|----------------------|");
 
-        foreach (var property in properties)
-        {
-            tableBuilder.AddRow(property.Key, property.Value);
-        }
-
-        return tableBuilder.Build();
+        return this;
     }
+
+    public IFormatter AddRow(string propertyName, object value)
+    {
+        // TODO: Add columns width
+        builder.AppendLine($"| {propertyName,-13} | {value,-20} |");
+        return this;
+    }
+
+    public string Build() => builder.ToString();
+
    
 }
 

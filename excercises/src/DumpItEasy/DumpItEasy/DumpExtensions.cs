@@ -14,7 +14,13 @@ public static class DumpExtensions
 
         var properties = obj.GetPropertiesWithValues();
 
-        var formattedText = formatter.Format(properties);
+        formatter.AddHeader();
+        foreach (var property in properties)
+        {
+            formatter.AddRow(property.Key, property.Value);
+        }
+
+        var formattedText = formatter.Build();
 
         outputAction(formattedText);
     }   

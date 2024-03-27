@@ -1,7 +1,10 @@
 ﻿namespace DumpItEasy;
 
+// Abstract Builder
 public interface IFormatter
 {
-    string Format(Dictionary<string, object> dictionary);
+    IFormatter AddHeader();
+    IFormatter AddRow(string propertyName, object value);
+    string Build();
 }
 

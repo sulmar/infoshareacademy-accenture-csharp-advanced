@@ -4,29 +4,41 @@ namespace DumpItEasyTests;
 
 public class MarkdownFormatterTests
 {
-    [Fact]
-    public void Format_Valid_ShouldReturnMarkdownTable()
+    private IFormatter sut;
+
+    public MarkdownFormatterTests()
     {
         // Arrange
-        IFormatter sut = new MarkdownFormatter();
-        Customer customer = CustomerFaker.Generate();
+        sut = new MarkdownFormatter();
+    }
 
-        var properties = customer.GetPropertiesWithValues();
-
+    [Fact]
+    public void AddHeader_WhenCalled_ShouldReturnMarkdownRow()
+    {
         // Act
-        var result = sut.Format(properties);
+        sut.AddHeader();
+        var result = sut.Build();
 
         // Assert
+
         var expected = """
             | Property Name | Value       |
             |---------------|-------------|
-            | FirstName     | John        |
-            | LastName      | Smith       |
-            | Age           | 30          |
-            | Email         | john@example.com |
-            | Address       | Dworcowa 1   |
-            | Phone Number  | 555-123-4567 |
-            | Member Since  | 2020-01-01   |
+            """;
+
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void AddRow_Valid_ShouldReturnMarkdownRow()
+    {
+        // Act
+        sut.AddRow("FirstName", "John");
+        var result = sut.Build();
+
+        // Assert
+        var expected = """            
+            | FirstName     | John        |            
             """;
 
         Assert.Equal(expected, result);
