@@ -15,6 +15,31 @@ public class ProductService
         return task;
     }
 
+    public Task QuickChangePriceAsync(int productId, decimal newPrice)
+    {
+        // zła praktyka:
+        // return Task.Run(() => QuickChangePrice(productId, newPrice));
+
+        QuickChangePrice(productId, newPrice);
+
+        // dobra praktyka
+        return Task.CompletedTask;
+    }
+
+    public Task<decimal> RecalculatePriceAsync(decimal originalPrice)
+    {
+        decimal newPrice = originalPrice * 1.1m;
+
+        return Task.FromResult(newPrice);
+    }
+
+    
+
+    public void QuickChangePrice(int productId, decimal newPrice)
+    {
+
+    }
+
     public decimal GetPrice(int productId)
     {
         "Fetching product price...".DumpThreadId();
@@ -42,6 +67,11 @@ public class LoggerService
         Thread.Sleep(1000); // Simulate some I/O delay, like writing to a file or database
 
         $"[Log]: {message}".DumpThreadId();
+    }
+
+    public Task LogAsync(string message)
+    {
+        Task.Run(()=>Log(message));  
     }
 }
 
