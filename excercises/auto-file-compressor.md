@@ -31,6 +31,7 @@ void Watcher_Created(object sender, FileSystemEventArgs e)
 2. Spakowany plik powinien mieć rozszerzenie zip.
 3. Oryginalny plik powinien być usunięty
 4. Uwzględnij, że w przyszłości spakowany plik może być wysyłany do zdalnego archiwum np. AWS S3
+5. Wyświetl informację o przetwarzanym pliku (progress) np. `lorem.txt is processing...`
 
 
 ## Czas
