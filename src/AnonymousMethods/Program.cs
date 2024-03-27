@@ -4,6 +4,14 @@ using System.Threading.Channels;
 
 Console.WriteLine("Hello, Delegates!");
 
+
+int res = Calculate();
+
+int Calculate()
+{
+    return 1 + 2 + 4;
+}
+
 Printer printer = new Printer();
 printer.Log += LogToDb;
 printer.Log += LogToConsole;
