@@ -13,3 +13,6 @@ Do rozpoczęcia tego kursu potrzebujesz następujących rzeczy:
 ```
 git clone https://github.com/sulmar/infoshareacademy-accenture-csharp-advanced
 ```
+
+## Zakres
+![Roadmap](docs/roadmap.png)
