@@ -14,5 +14,11 @@ Do rozpoczęcia tego kursu potrzebujesz następujących rzeczy:
 git clone https://github.com/sulmar/infoshareacademy-accenture-csharp-advanced
 ```
 
+2. Zbuduj projekty
+```
+cd src
+dotnet build
+```
+
 ## Zakres
 ![Roadmap](docs/roadmap.png)
